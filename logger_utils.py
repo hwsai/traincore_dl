@@ -156,7 +156,13 @@ class TrainingLogger:
                     continue
         self.plot_losses(train_losses, val_losses)
         print(f"✅ Replotted from CSV: {csv_path}")
-
+    def save_norm_stats(self, stats: dict):
+        """
+        儲存資料正規化或縮放資訊
+        """
+        stats_path = os.path.join(self.save_dir, "norm_stats.pt")
+        torch.save(stats, stats_path)
+        print(f"✅ Norm stats 已儲存：{stats_path}")
 
 # =====================================================
 # CLI 模式：命令列重繪
